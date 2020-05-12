@@ -14,7 +14,7 @@ class CreateRentalStatusesTable extends Migration
     public function up()
     {
         Schema::create('rental_statuses', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->unique();
+            $table->id();
             $table->string('name');
             $table->timestamps();
         });
