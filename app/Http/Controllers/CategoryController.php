@@ -14,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        // ->orderBy('name','asc')->get();
+        return view('categories.index')->with('categories', $categories);
     }
 
     /**
@@ -35,7 +37,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 123;
     }
 
     /**

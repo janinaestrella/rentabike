@@ -3,10 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
-    use SoftDeletes; //will not be deleted from DB.. sa user interface lang
+    // use SoftDeletes; //will not be deleted from DB.. sa user interface lang
 
     protected $fillable = ['name'];  //for mass assignment 
 
