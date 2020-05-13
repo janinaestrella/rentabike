@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Bike;
+use App\Category;
+use App\BikeStatus;
 use Illuminate\Http\Request;
 
 class BikeController extends Controller
@@ -12,9 +14,21 @@ class BikeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        
+        // to get id from url
+        if ($request->query('category_id')){
+            $bikes = Bike::where("category_id", $request->query('category_id'))->get();
+        } else {
+            $bikes = Bike::all();
+        }
+
+        $categories = Category::all();
+
+        return view('bikes.index')
+            ->with('bikes', $bikes)
+            ->with('categories', $categories);
     }
 
     /**
@@ -24,7 +38,11 @@ class BikeController extends Controller
      */
     public function create()
     {
-        //
+        $statuses = BikeStatus::all();
+        $categories = Category::all();
+        return view('bikes.create')
+            ->with('categories', $categories)
+            ->with('statuses', $statuses);
     }
 
     /**

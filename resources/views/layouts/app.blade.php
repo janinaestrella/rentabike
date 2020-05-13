@@ -38,6 +38,16 @@
                             'url' => route('categories.index'),
                             'displayName' => 'Categories'
                             ])
+
+                    @include("partials.navlink", [
+                            'url' => route('bikes.create'),
+                            'displayName' => 'Add Bike'
+                            ])
+
+                    @include("partials.navlink", [
+                            'url' => route('bikes.index'),
+                            'displayName' => 'Bikes'
+                            ])
                     </ul>
 
                     <!-- Right Side Of Navbar -->

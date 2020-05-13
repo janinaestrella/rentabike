@@ -25,5 +25,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resources([
-	'categories' => 'CategoryController'
+	'categories' => 'CategoryController',
+	'bikes' => 'BikeController'
 	]);
