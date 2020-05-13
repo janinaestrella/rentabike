@@ -1,4 +1,8 @@
-<li class="list-group-item d-flex justify-content-between align-items-center">{{ $category->name }}
+
+<li class="list-group-item d-flex justify-content-between align-items-center">
+	
+	{{ $category->name }}
+	
 	<div class="container d-flex justify-content-end ">
 		<a href="{{ route('categories.show', ['category' => $category->id]) }}" class="btn btn-primary mx-1">Show</a>
 

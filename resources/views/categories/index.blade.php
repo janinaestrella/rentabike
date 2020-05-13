@@ -34,6 +34,16 @@
 					@include("categories.partials.category_card")
 				@endforeach
 			</ul>
+
+			{{-- start of accor --}}
+			{{-- <div class="accordion" id="accordionExample">
+				@foreach($categories as $category)
+					@include("categories.partials.category_accordion")
+				@endforeach
+			</div> --}}
+			{{-- end of accord --}}
+
+
 		</div>
 
 	</div>

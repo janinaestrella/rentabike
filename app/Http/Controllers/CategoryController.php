@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Bike;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -15,7 +16,11 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::orderBy('name','asc')->get();
-        return view('categories.index')->with('categories', $categories);
+        // $bikes = Bike::all();
+
+        return view('categories.index')
+            ->with('categories', $categories);
+            // ->with('bikes', $bikes);
     }
 
     /**
