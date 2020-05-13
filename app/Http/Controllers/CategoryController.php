@@ -14,8 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        // ->orderBy('name','asc')->get();
+        $categories = Category::orderBy('name','asc')->get();
         return view('categories.index')->with('categories', $categories);
     }
 
@@ -37,7 +36,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        return 123;
+        //validation
+        $validatedData = $request->validate([
+            'name' => 'required|unique:categories,name|string'
+        ]);
+
+        $category = new Category($validatedData); 
+        $category->save();
+
+        return redirect(route('categories.index'))->with('message', "{$category->name} was added succesfully");
     }
 
     /**
@@ -48,7 +55,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('categories.show')->with('category', $category);
     }
 
     /**
@@ -59,7 +66,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        
     }
 
     /**
@@ -71,7 +78,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|unique:categories,name|string'
+            ]);
+
+        $category->update($validatedData);
+
+        return redirect(route('categories.index'))->with('message', "{$category->name} was updated succesfully");
     }
 
     /**
@@ -82,6 +95,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect(route('categories.index'))->with('message', "{$category->name} was deleted succesfully"); 
     }
 }

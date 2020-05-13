@@ -13,19 +13,19 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-        	'name' => 'Triathlon Bike'
+        	'name' => 'Triathlon'
         ]);
 
         DB::table('categories')->insert([
-        	'name' => 'Electric Bike'
+        	'name' => 'Electric'
         ]);
 
         DB::table('categories')->insert([
-        	'name' => 'Tandem Bike'
+        	'name' => 'Tandem'
         ]);
 
         DB::table('categories')->insert([
-        	'name' => 'Mountain Bike'
+        	'name' => 'Mountain'
         ]);
     }
 }

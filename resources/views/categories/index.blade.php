@@ -7,7 +7,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<h1>List of Categories</h1>
+					<h1>Bike Category</h1>
 					<hr>	
 				</div>
 			</div>
@@ -26,7 +26,8 @@
 
 		<div class="col-12 col-md-8 mx-auto">
 
-			{{-- @includeWhen(Session::has('message'),'partials.message_flash') --}}
+			@includeWhen(Session::has('message'),'partials.message_flash')
+			@includeWhen($errors->any(), 'partials.error_message')
 
 			<ul class="list-group">
 				@foreach($categories as $category)
