@@ -60,7 +60,6 @@ class BikeController extends Controller
             'category_id' => 'required|numeric',
             'image' => 'required|image|max:5000',
             'stock' => 'required|numeric',
-            // 'bikestatus_id' => 'required|numeric',
             'description' => 'required|string'
         ]);
 
@@ -115,13 +114,20 @@ class BikeController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string',
             'category_id' => 'required|numeric',
-            // 'image' => 'required|image|max:5000',
+            'image' => 'required|image|max:5000',
             'stock' => 'required|numeric',
-            // 'bikestatus_id' => 'required|numeric',
             'description' => 'required|string'
         ]);
 
         $bike->update($validatedData);
+
+        if ($request->hasFile('image')){
+    
+           //save image to store('public/products') folder 
+            $image_path = $request->file('image')->store('public/products'); 
+            $bike->image = Storage::url($image_path);
+        }
+
         $bike->save();
 
         return redirect(route('bikes.index'))->with('message', "Product {$bike->name} Updated");
