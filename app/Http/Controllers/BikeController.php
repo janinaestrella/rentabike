@@ -6,6 +6,7 @@ use App\Bike;
 use App\Category;
 use App\BikeStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BikeController extends Controller
 {
@@ -53,7 +54,24 @@ class BikeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'category_id' => 'required|numeric',
+            'image' => 'required|image|max:5000',
+            'stock' => 'required|numeric',
+            // 'bikestatus_id' => 'required|numeric',
+            'description' => 'required|string'
+        ]);
+
+        $image_path = $request->file('image')->store('public/images');
+
+        $bike = new Bike($validatedData);
+        $bike->image = Storage::url($image_path); 
+        $bike->bikestatus_id = 1;
+
+        $bike->save();
+        return redirect(route('bikes.create'))->with('message',"New bike added");;
     }
 
     /**

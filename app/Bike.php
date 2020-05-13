@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bike extends Model
 {
+    protected $fillable =['name', 'image', 'stock', 'description', 'category_id', 'bikestatus_id'];
+
     public function rentalTransactions()
     {
     	return $this->hasMany('App\RentalTransaction');

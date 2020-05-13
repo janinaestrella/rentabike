@@ -22,8 +22,6 @@
 				</div>
 
 				<div class="row">
-					
-
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="category_id">Bike Category:</label>
@@ -41,42 +39,34 @@
 							<input type="file" name="image" id="image" class="form-control-file">
 						</div>
 					</div>
-
-					
-
 				</div>
 				
 				
 				<div class="row">
 					<div class="col-12 col-md-6">
 						<div class="form-group">
-							<label for="stock">Quantity in Stock:</label>
-							<input type="number" name="stock" id="stock" class="form-control" value=" {{ old('stock') }}">
+							<label for="stock">Stock:</label>
+							<input type="number" name="stock" id="stock" class="form-control" value=" {{ old('stock') }}" min="1">
 						</div>		
 					</div>
 
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="bikestatus_id">Bike Status:</label>
-							<select name="bikestatus_id" id="bikestatus_id" class="form-control">
+							<select name="bikestatus_id" id="bikestatus_id" class="form-control disabled" disabled>
 								@foreach($statuses as $status)
 								<option value="{{ $status->id }}">{{ $status->name }}</option>
 								@endforeach
 							</select>
 						</div>
 					</div>
-
-					
-
 				</div>
 				
-
 
 				<div class="form-group">
 					<label for="description">Description:</label>
 					<textarea name="description" id="description" cols="30" rows="5" class="form-control"></textarea>
 				</div>
-
 
 
 				<div class="text-center">
