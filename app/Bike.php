@@ -14,7 +14,8 @@ class Bike extends Model
     }
 
     public function category(){
-    	return $this->belongsTo('App\Category')->withTrashed(); //withTrashed para kahit softdeleted na ung category, lalabas pa rin ung category name sa product
+    	return $this->belongsTo('App\Category');
+        // ->withTrashed(); //withTrashed para kahit softdeleted na ung category, lalabas pa rin ung category name sa product
     }
 
     public function bikeStatus(){
