@@ -82,7 +82,7 @@ class BikeController extends Controller
      */
     public function show(Bike $bike)
     {
-        //
+        return view('bikes.show')->with('bike', $bike);
     }
 
     /**
@@ -93,7 +93,13 @@ class BikeController extends Controller
      */
     public function edit(Bike $bike)
     {
-        //
+        $statuses = BikeStatus::all();
+        $categories = Category::all();
+
+        return view('bikes.edit')
+            ->with('categories', $categories)
+            ->with('statuses', $statuses)
+            ->with('bike', $bike);
     }
 
     /**
@@ -105,7 +111,20 @@ class BikeController extends Controller
      */
     public function update(Request $request, Bike $bike)
     {
-        //
+        //validation
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'category_id' => 'required|numeric',
+            // 'image' => 'required|image|max:5000',
+            'stock' => 'required|numeric',
+            // 'bikestatus_id' => 'required|numeric',
+            'description' => 'required|string'
+        ]);
+
+        $bike->update($validatedData);
+        $bike->save();
+
+        return redirect(route('bikes.index'))->with('message', "Product {$bike->name} Updated");
     }
 
     /**
@@ -116,6 +135,7 @@ class BikeController extends Controller
      */
     public function destroy(Bike $bike)
     {
-        //
+        $bike->delete();
+        return redirect(route('bikes.index'));
     }
 }

@@ -6,7 +6,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<h1>Choose a Bike</h1>
+					<h1 class="text-center">Choose a Bike</h1>
 					<hr>	
 				</div>
 			</div>
@@ -23,8 +23,6 @@
 						>
 							{{ $category->name }}
 						</option>
-
-
 						@endforeach
 					</select>
 
@@ -36,7 +34,7 @@
 		<div class="col-12 col-md-8 mx-auto">
 			<div class="row">
 				@foreach($bikes as $bike)
-					{{-- @include('bikes.partials.single_bike') --}}
+					@include('bikes.partials.single_bike')
 				@endforeach
 			</div>
 		</div>
