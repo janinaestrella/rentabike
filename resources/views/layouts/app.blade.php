@@ -60,7 +60,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                          @include("partials.navlink", [
-                            'url' => route('bikes.create'),
+                            'url' => route('bikerequests.index'),
                             'displayName' => 'Bike Request Form'
                             ])
 
