@@ -114,7 +114,7 @@ class BikeController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string',
             'category_id' => 'required|numeric',
-            'image' => 'required|image|max:5000',
+            // 'image' => 'required|image|max:5000',
             'stock' => 'required|numeric',
             'description' => 'required|string'
         ]);
@@ -122,9 +122,8 @@ class BikeController extends Controller
         $bike->update($validatedData);
 
         if ($request->hasFile('image')){
-    
-           //save image to store('public/products') folder 
-            $image_path = $request->file('image')->store('public/products'); 
+           //save image to store('public/images') folder 
+            $image_path = $request->file('image')->store('public/images'); 
             $bike->image = Storage::url($image_path);
         }
 

@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 //new homepage
-Route::get('/', 'CategoryController@index');
+Route::get('/', 'BikeController@index');
 
 Auth::routes();
 
@@ -26,6 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resources([
 	'categories' => 'CategoryController',
-	'bikes' => 'BikeController'
+	'bikes' => 'BikeController',
+	'requests' => 'RequestController'
 	]);
 

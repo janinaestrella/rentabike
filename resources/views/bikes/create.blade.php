@@ -41,9 +41,8 @@
 					<div class="col-12 col-md-6">
 						<div class="form-group">
 							<label for="stock">Stock:</label>
-							<input type="number" name="stock" id="stock" class="form-control" value=" {{ old('stock') }}" min="1">
+							<input type="number" name="stock" id="stock" class="form-control" min="1">
 						</div>		
-					</div>
 					</div>
 				</div>
 				
