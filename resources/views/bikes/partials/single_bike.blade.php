@@ -7,7 +7,20 @@
 			<div class="d-flex justify-content-between">
 			<h6 class="card-title"><strong>{{ $bike->name }}</strong></h6>
 			</div>
-			<p class="card-text"> Bike Model: {{$bike->model_code}}</p>
+			<p class="card-text"> Bike Model: {{$bike->model_code}}
+				<span 
+					class="badge badge-sm
+					@if($bike->bikestatus_id == 1)
+					badge-success
+					@elseif($bike->bikestatus_id == 2)
+					badge-danger
+					@else
+					badge-success
+					@endif
+					"> 
+					{{ $bike->bikeStatus->name }}
+				</span>
+			</p>
 			
 			<p class="badge badge-info">{{ $bike->category->name }}</p>
 			<p class="card-text">{{ $bike->description }}</p>

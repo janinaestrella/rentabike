@@ -27,12 +27,9 @@ class BikeController extends Controller
 
         $categories = Category::all();
 
-        $bikeStatuses = BikeStatus:: all();
-
         return view('bikes.index')
             ->with('bikes', $bikes)
-            ->with('categories', $categories)
-            ->with('bikeStatuses', $bikeStatuses);
+            ->with('categories', $categories);
     }
 
     /**

@@ -38,20 +38,32 @@
                             'displayName' => 'Categories'
                             ])
 
-                    @include("partials.navlink", [
+                    {{-- @include("partials.navlink", [
                             'url' => route('bikes.create'),
                             'displayName' => 'Add Bike'
-                            ])
+                            ]) --}}
 
                     @include("partials.navlink", [
                             'url' => route('bikes.index'),
                             'displayName' => 'Bikes'
                             ])
+
+                    @include("partials.navlink", [
+                            'url' => route('bikes.index'),
+                            'displayName' => 'My Requests'
+                            ])
                     </ul>
+
+                   
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                         @include("partials.navlink", [
+                            'url' => route('bikes.create'),
+                            'displayName' => 'Bike Request Form'
+                            ])
+
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

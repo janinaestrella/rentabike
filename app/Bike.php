@@ -13,13 +13,13 @@ class Bike extends Model
         // ->withTrashed(); //withTrashed para kahit softdeleted na ung category, lalabas pa rin ung category name sa product
     }
     
+    public function bikeStatus(){
+    	return $this->belongsTo('App\BikeStatus', 'bikestatus_id'); 
+    }
+
     public function rentalTransactions()
     {
     	return $this->hasMany('App\RentalTransaction');
     }
-
-
-    public function bikeStatus(){
-    	return $this->belongsTo('App\BikeStatus'); 
-    }
+    
 }
