@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Bike;
+use Str;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -60,7 +61,27 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('categories.show')->with('category', $category);
+
+        $bike = Bike::all();
+        $bike->model_code = strtoupper(Str::random(6));
+        
+        // count all items in a category
+        $totalcount = count($category->bikes);
+
+        // get all bikestatus id 1 where category_id is equal to category id
+        $availablebikes = Bike::where('bikestatus_id', 1)
+                            ->where('category_id', $category->id)->count();
+
+        //to get the items per category
+        $bikepercategory = Bike::where('category_id', $category->id)->get();
+        
+
+        return view('categories.show')
+            ->with('category', $category)
+            ->with('bike', $bike)
+            ->with('totalcount', $totalcount)
+            ->with('availablebikes', $availablebikes)
+            ->with('bikepercategory', $bikepercategory);
     }
 
     /**
@@ -103,4 +124,5 @@ class CategoryController extends Controller
         $category->delete();
         return redirect(route('categories.index'))->with('message', "{$category->name} was deleted succesfully"); 
     }
+
 }

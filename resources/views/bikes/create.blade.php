@@ -20,6 +20,26 @@
 					<input type="text" name="name" id="name" class="form-control"
 					value=" {{ old('name') }}">
 				</div>
+				
+				{{-- newwwwwwwwwww --}}
+				{{-- <div class="form-group">
+
+					<label for="name">Bike Model:</label>
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							@foreach($categories as $category)
+							<span class="input-group-text" id="basic-addon1">{{ $category->id }} -
+							</span>
+							@endforeach
+						</div>
+
+
+						<input class="form-control" type="text
+						model_code" name="model_code" placeholder="Unit Control Code" value="RANDOMMMM">
+					</div>
+
+				</div> --}}
+				{{-- endddddddddd --}}
 
 				<div class="form-group">
 					<label for="image">Bike Image:</label>
@@ -40,8 +60,12 @@
 
 					<div class="col-12 col-md-6">
 						<div class="form-group">
-							<label for="stock">Stock:</label>
-							<input type="number" name="stock" id="stock" class="form-control" min="1">
+							<label for="bikestatus_id">Bike Status:</label>
+							<select name="bikestatus_id" id="bikestatus_id" class="form-control">
+								@foreach($statuses as $status)
+								<option value="{{ $status->id }}">{{ $status->name }}</option>
+								@endforeach
+							</select>
 						</div>		
 					</div>
 				</div>

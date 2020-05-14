@@ -18,15 +18,17 @@ use Illuminate\Support\Facades\Route;
 // });
 
 //new homepage
-Route::get('/', 'BikeController@index');
+Route::get('/', 'CategoryController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('/categories/{category-id}', 'CategoryController@savebike')->name('categories.savebike');
+
 Route::resources([
 	'categories' => 'CategoryController',
 	'bikes' => 'BikeController',
-	'requests' => 'RequestController'
+	// 'requests' => 'RequestController'
 	]);
 

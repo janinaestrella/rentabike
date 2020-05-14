@@ -16,16 +16,12 @@
 				@method('PUT')
 
 				<div class="form-group">
-					<label for="name">Bike Name:</label>
-					<input type="text" name="name" id="name" class="form-control"
-					value=" {{ $bike->name }}">
+					<label for="name">Bike Model:</label>
+					<input readonly type="text" name="model_code" id="model_code" class="form-control"
+					value="{{ $bike->model_code }}">
 				</div>
 
-				<div class="form-group">
-					<label for="image">Bike Image:</label>
-					<input type="file" name="image" id="image" class="form-control-file">
-				</div>
-
+				
 				<div class="row">
 					<div class="col-12 col-md-6">
 						<div class="form-group">
@@ -33,24 +29,23 @@
 							<select name="category_id" id="category_id" class="form-control">
 								@foreach($categories as $category)
 								<option 
-						value="{{ $category->id }}"
-						{{ $bike->category_id === $category->id ? "selected" : "" }}>
-							{{ $category->name }}
-						</option>
-								@endforeach
-							</select>
-						</div>
-					</div>
-
-					<div class="col-12 col-md-6">
-						<div class="form-group">
-							<label for="stock">Stock:</label>
-							<input type="text" name="stock" id="stock" class="form-control"  min="1" value=" {{$bike->stock}} "> 
-	
-						</div>	
-						
+								value="{{ $category->id }}"
+								{{ $bike->category_id === $category->id ? "selected" : "" }}>
+								{{ $category->name }}
+							</option>
+							@endforeach
+						</select>
 					</div>
 				</div>
+
+				<div class="col-12 col-md-6">
+					<div class="form-group">
+						<label for="image">Bike Image:</label>
+						<input type="file" name="image" id="image" class="form-control-file">
+					</div>
+					
+				</div>
+			</div>
 							
 
 				<div class="form-group">

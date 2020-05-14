@@ -17,7 +17,6 @@ class CreateBikeRentalTransactionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('bike_id');
             $table->unsignedBigInteger('rentaltransaction_id');
-            $table->integer('rent_qty');
             $table->timestamps();
 
             $table->foreign('bike_id')->references('id')->on('bikes');

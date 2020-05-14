@@ -27,9 +27,12 @@ class BikeController extends Controller
 
         $categories = Category::all();
 
+        $bikeStatuses = BikeStatus:: all();
+
         return view('bikes.index')
             ->with('bikes', $bikes)
-            ->with('categories', $categories);
+            ->with('categories', $categories)
+            ->with('bikeStatuses', $bikeStatuses);
     }
 
     /**
@@ -41,6 +44,8 @@ class BikeController extends Controller
     {
         $statuses = BikeStatus::all();
         $categories = Category::all();
+       
+       
         return view('bikes.create')
             ->with('categories', $categories)
             ->with('statuses', $statuses);
@@ -53,24 +58,31 @@ class BikeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        // dd($request->all());
         //validation
         $validatedData = $request->validate([
-            'name' => 'required|string',
+            'model_code' => 'required|string',
             'category_id' => 'required|numeric',
+            // 'bikestatus_id' => 'required|numeric',
             'image' => 'required|image|max:5000',
-            'stock' => 'required|numeric',
             'description' => 'required|string'
         ]);
+
+        
 
         $image_path = $request->file('image')->store('public/images');
 
         $bike = new Bike($validatedData);
         $bike->image = Storage::url($image_path); 
         $bike->bikestatus_id = 1;
+        // dd($bike->category);
 
         $bike->save();
-        return redirect(route('bikes.create'))->with('message',"New bike added");;
+
+        return back();
+        // return redirect(route('categories.show', ['category' => $bike->category_id]));
+        // return view('bike.show')->with('message',"New bike added");
     }
 
     /**
@@ -110,12 +122,12 @@ class BikeController extends Controller
      */
     public function update(Request $request, Bike $bike)
     {
+        // dd($request->all());
         //validation
         $validatedData = $request->validate([
-            'name' => 'required|string',
+            'model_code' => 'required|string',
             'category_id' => 'required|numeric',
             // 'image' => 'required|image|max:5000',
-            'stock' => 'required|numeric',
             'description' => 'required|string'
         ]);
 
@@ -129,7 +141,10 @@ class BikeController extends Controller
 
         $bike->save();
 
-        return redirect(route('bikes.index'))->with('message', "Product {$bike->name} Updated");
+        // $categories = Category::all();
+        return redirect(route('categories.show', ['category' => $bike->category_id]));
+        return back();
+        // return redirect(route('bikes.index'))->with('message', "Product {$bike->name} Updated");
     }
 
     /**
@@ -141,6 +156,6 @@ class BikeController extends Controller
     public function destroy(Bike $bike)
     {
         $bike->delete();
-        return redirect(route('bikes.index'));
+        return back();
     }
 }
