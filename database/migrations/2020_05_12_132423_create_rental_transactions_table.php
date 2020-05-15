@@ -17,8 +17,9 @@ class CreateRentalTransactionsTable extends Migration
             $table->id();
             $table->date('pickup_date');
             $table->date('return_date');
+            $table->string('code');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('rentstatus_id');
+            $table->unsignedBigInteger('rentstatus_id')->default(1); //pending approval
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

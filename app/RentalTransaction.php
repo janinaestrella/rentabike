@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class RentalTransaction extends Model
 {
+    protected $fillable =['code', 'pickup_date', 'return_date', 'user_id', 'rentstatus_id'];
+
     public function user()
     {
         return $this->belongsTo('App\User');

@@ -29,6 +29,7 @@ Route::delete('/bikerequests/clear', 'BikeRequestController@clear')->name('biker
 Route::resources([
 	'categories' => 'CategoryController',
 	'bikes' => 'BikeController',
-	'bikerequests' => 'BikeRequestController'
+	'bikerequests' => 'BikeRequestController',
+	'rentaltransactions' => 'RentalTransactionController'
 	]);
 
