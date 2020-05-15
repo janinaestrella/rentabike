@@ -16,11 +16,11 @@ class CreateBikeRentalTransactionsTable extends Migration
         Schema::create('bike_rental_transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('bike_id');
-            $table->unsignedBigInteger('rentaltransaction_id');
+            $table->unsignedBigInteger('rental_transaction_id');
             $table->timestamps();
 
             $table->foreign('bike_id')->references('id')->on('bikes');
-            $table->foreign('rentaltransaction_id')->references('id')->on('rental_transactions');
+            $table->foreign('rental_transaction_id')->references('id')->on('rental_transactions');
         });
     }
 

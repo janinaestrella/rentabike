@@ -64,23 +64,18 @@ class RentalTransactionController extends Controller
         // 2. add entries to pivot table : bike_rental_transactions table (session based)
         //     get the key/id from session
             $array = Session::get('data');
+
             foreach($array as $key => $data_id){
         //     query to database to get the price of the collected product based on ids
                     $bike = Bike::find($data_id);
                     
-        //     for every products listed in cart, add them in the pivot table :     bike_rental_transactions table 
-                    // $rentaltransaction->bikes()->attach($bike->id);
-                    // $rentaltransaction->save();
+        //      add them in the pivot table: bike_rental_transactions table 
+                    $rentaltransaction->bikes()->attach($bike->id);
+                    $rentaltransaction->save();
                     
             }
-
-
-        //     price, subtotal, quantity
-
         
-
-        
-        // Session::forget('cart');
+        Session::forget('data');
         return  redirect(route('rentaltransactions.index'));
     }
 
