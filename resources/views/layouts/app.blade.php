@@ -48,10 +48,10 @@
                             'displayName' => 'Bikes'
                             ])
 
-                    @include("partials.navlink", [
+                   {{--  @include("partials.navlink", [
                             'url' => route('bikes.index'),
                             'displayName' => 'My Requests'
-                            ])
+                            ]) --}}
                     </ul>
 
                    
@@ -62,7 +62,7 @@
                          @include("partials.navlink", [
                             'url' => route('bikerequests.index'),
                             'displayName' => 'Bike Request Form'
-                            ])
+                            ]) <span class="badge badge-primary">0</span>
 
                         @guest
                             <li class="nav-item">

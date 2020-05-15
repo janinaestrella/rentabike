@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
+use App\Bike;
+use Auth;
 
 class BikeRequestController extends Controller
 {
@@ -11,11 +14,19 @@ class BikeRequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('bikerequests.index');
-    }
+    public function index(Request $request)
+    {   
 
+    // dd(Session::get('data.$id'));
+
+    //query to fetch data stored in session
+    $bikes = Bike::find(Session::get('data'));
+    // dd($bikes);
+
+    return view('bikerequests.index')->with('bikes', $bikes);
+
+    }
+// 
     /**
      * Show the form for creating a new resource.
      *
@@ -23,7 +34,7 @@ class BikeRequestController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +45,7 @@ class BikeRequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**
@@ -66,9 +77,19 @@ class BikeRequestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $bikerequest)
     {
-        //
+        // dd($bikerequest);
+        //upon request button click, lagay si data sa session using bikerequest --> galing to sa slug ng update
+        // $request->session()->put('data',[$bikerequest]);  //put for single data kasi hindi siya nadadagdagan sa array
+
+        // $request->session()->put('data.$id',$bikerequest);
+
+        // if (Session::has('data')){
+            $request->session()->push('data',$bikerequest); //push for multiple data para array
+        // } 
+
+        return redirect(route('bikerequests.index'));
     }
 
     /**
@@ -79,6 +100,38 @@ class BikeRequestController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // dd($id);
+        $array = Session::get('data');
+        // dd($array);
+
+        foreach($array as $key => $data_id){
+            if ($id == $data_id){
+                // dd('testing kung papasok');
+                unset($array[$key]);
+
+            }
+        }
+
+        //place new array to session
+        Session::put('data', $array);
+
+
+        // return $array;
+        // dd(Session::get('data'));
+        // Session::forget('$id');
+        // dd(Session::forget($id));
+        if (count(Session::get('data')) === 0){
+            $this->clear(); //to get clear method
+        }
+
+        return redirect(route('bikerequests.index'));
+
+    }
+
+    public function clear()
+    {
+        Session::forget('data');
+
+        return redirect(route('bikerequests.index'));
     }
 }

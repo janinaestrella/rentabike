@@ -18,11 +18,13 @@ use Illuminate\Support\Facades\Route;
 // });
 
 //new homepage
-Route::get('/', 'CategoryController@index');
+Route::get('/', 'BikeController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::delete('/bikerequests/clear', 'BikeRequestController@clear')->name('bikerequests.clear');
 
 Route::resources([
 	'categories' => 'CategoryController',

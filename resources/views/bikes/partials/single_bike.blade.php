@@ -15,7 +15,7 @@
 					@elseif($bike->bikestatus_id == 2)
 					badge-danger
 					@else
-					badge-success
+					badge-warning
 					@endif
 					"> 
 					{{ $bike->bikeStatus->name }}
@@ -26,12 +26,11 @@
 			<p class="card-text">{{ $bike->description }}</p>
 
 			{{-- @cannot('isAdmin') --}}
-			<form action="{{-- {{ route('requests.update', ['request' => $bike->id]) }} --}}" method="post">	
-				
+			<form action="{{ route('bikerequests.update', ['bikerequest' => $bike->id]) }}" method="POST">		
 				@csrf
 				@method('PUT')
 
-				<button class="btn btn-primary w-100 my-1 add-to-cart" data-id="{{ $bike->id }}" >Request to Rent</button>
+				<button class="btn btn-primary w-100 my-1 add-to-cart" data-id="{{ $bike->id }}" type="submit">Request to Rent</button>
 
 			</form>
 			

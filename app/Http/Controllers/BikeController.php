@@ -124,6 +124,7 @@ class BikeController extends Controller
         $validatedData = $request->validate([
             'model_code' => 'required|string',
             'category_id' => 'required|numeric',
+            'bikestatus_id' => 'required|numeric',
             // 'image' => 'required|image|max:5000',
             'description' => 'required|string'
         ]);
@@ -139,8 +140,8 @@ class BikeController extends Controller
         $bike->save();
 
         // $categories = Category::all();
-        return redirect(route('categories.show', ['category' => $bike->category_id]));
-        return back();
+        return redirect(route('categories.show', ['category' => $bike->category_id]))->with('message', "Product {$bike->name} Updated");
+        // return back();
         // return redirect(route('bikes.index'))->with('message', "Product {$bike->name} Updated");
     }
 
