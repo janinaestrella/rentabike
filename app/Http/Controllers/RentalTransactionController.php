@@ -17,10 +17,15 @@ class RentalTransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
        
-       return view('rentaltransactions.index');
+       $rentalstatuses = RentalStatus::all();
+       $rentaltransactions = RentalTransaction::all();
+
+       return view('rentaltransactions.index')
+        ->with('rentaltransactions', $rentaltransactions )
+        ->with('rentalstatuses', $rentalstatuses);
     }
 
     /**

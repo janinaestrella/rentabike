@@ -48,10 +48,10 @@
                             'displayName' => 'Bikes'
                             ])
 
-                   {{--  @include("partials.navlink", [
-                            'url' => route('bikes.index'),
+                    @include("partials.navlink", [
+                            'url' => route('rentaltransactions.index'),
                             'displayName' => 'My Requests'
-                            ]) --}}
+                            ])
                     </ul>
 
                    
@@ -59,10 +59,19 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                         @include("partials.navlink", [
+                       {{--   @include("partials.navlink", [
                             'url' => route('bikerequests.index'),
                             'displayName' => 'Bike Request Form'
                             ]) <span class="badge badge-primary">0</span>
+ --}}                   
+                         <li class="nav-item">
+                            <a href="{{route('bikerequests.index')}}" class="nav-link">Bike Request Form
+                                <span id="cart-count" class="badge badge-primary">
+                                    {{ Session::has('data') ? count(Session::get('data')) : 0}}
+                                </span>
+
+                            </a>
+                        </li>
 
                         @guest
                             <li class="nav-item">

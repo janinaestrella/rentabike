@@ -15,7 +15,7 @@ class RentalTransaction extends Model
 
     public function rentalStatus()
     {
-    	return $this->belongsTo('App\RentalStatus');
+    	return $this->belongsTo('App\RentalStatus', 'rentstatus_id');
     }
 
     public function bikes()
