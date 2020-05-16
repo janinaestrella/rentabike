@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {   
+        //if guest or not logged in, redirect to login page
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *

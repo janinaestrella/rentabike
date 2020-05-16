@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Storage;
 
 class BikeController extends Controller
 {
+    public function __construct()
+    {   
+        //if guest or not logged in, redirect to login page
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
