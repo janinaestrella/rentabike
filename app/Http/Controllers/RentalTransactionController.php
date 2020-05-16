@@ -113,9 +113,17 @@ class RentalTransactionController extends Controller
      * @param  \App\RentalTransaction  $rentalTransaction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RentalTransaction $rentalTransaction)
+    public function update(Request $request, RentalTransaction $rentaltransaction)
     {
-        //
+        $validatedData = $request->validate([
+            'rentstatus_id' => 'required|numeric'
+            ]);
+
+
+        // dd($rentaltransaction );
+        $rentaltransaction->update($validatedData);
+
+        return back();
     }
 
     /**

@@ -8,7 +8,7 @@
 					@if ($rentaltransaction->rentstatus_id ==1 )
 					badge-warning
 					@elseif ($rentaltransaction->rentstatus_id == 2)
-					badge-sucess
+					badge-success
 					@elseif ($rentaltransaction->rentstatus_id == 3)
 					badge-danger
 					@elseif ($rentaltransaction->rentstatus_id == 4)
