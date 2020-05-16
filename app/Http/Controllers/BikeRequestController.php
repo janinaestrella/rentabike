@@ -17,13 +17,22 @@ class BikeRequestController extends Controller
     public function index(Request $request)
     {   
 
-    // dd(Session::get('data.$id'));
+    // dd(Session::get('data'));
+    // array_unique to delete duplicates in session
+    if (Session::has('data')){
+    $array = array_unique(Session::get('data'));
+    // once delete, update the session data
+    Session::put('data', $array);
+    }
 
     //query to fetch data stored in session
     $bikes = Bike::find(Session::get('data'));
     // dd($bikes);
 
-    return view('bikerequests.index')->with('bikes', $bikes);
+    
+
+    return view('bikerequests.index')
+        ->with('bikes', $bikes);
 
     }
 // 
@@ -88,6 +97,7 @@ class BikeRequestController extends Controller
         // if (Session::has('data')){
             $request->session()->push('data',$bikerequest); //push for multiple data para array
         // } 
+            
 
         return redirect(route('bikerequests.index'));
     }
