@@ -128,6 +128,8 @@ class RentalTransactionController extends Controller
      */
     public function update(Request $request, RentalTransaction $rentaltransaction)
     {
+        $this->authorize('update', $rentaltransaction);
+        
         $validatedData = $request->validate([
             'rentstatus_id' => 'required|numeric'
             ]);

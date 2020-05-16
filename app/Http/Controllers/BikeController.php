@@ -43,8 +43,10 @@ class BikeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Bike $bike)
     {
+        $this->authorize('create', $bike);
+
         $statuses = BikeStatus::all();
         $categories = Category::all();
        
@@ -107,6 +109,7 @@ class BikeController extends Controller
      */
     public function edit(Bike $bike)
     {
+        $this->authorize('update', $bike);
         $statuses = BikeStatus::all();
         $categories = Category::all();
 
@@ -125,6 +128,7 @@ class BikeController extends Controller
      */
     public function update(Request $request, Bike $bike)
     {
+        $this->authorize('update', $bike);
         // dd($request->all());
         //validation
         $validatedData = $request->validate([
@@ -159,6 +163,7 @@ class BikeController extends Controller
      */
     public function destroy(Bike $bike)
     {
+        $this->authorize('delete', $bike);
         $bike->delete();
         return back();
     }

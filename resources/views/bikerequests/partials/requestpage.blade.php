@@ -49,10 +49,10 @@
 {{-- date/calendar --}}
 <div class="row">
 	<div class="col-12 col-sm-8 mx-auto">
-		<form action="{{ route('rentaltransactions.store') }}" method="post" class="mb-5">
+		<form action="{{ route('rentaltransactions.store') }}" method="post" class="mb-5 ">
 			@csrf
 
-			<div class="row align-items-center">
+			<div class="row ">
 				<div class="col align-self-start">
 					<div action="form-group">
 						<label for="pickup_date">Pick-up Date</label>
@@ -68,7 +68,7 @@
 				</div>
 			</div>
 
-			<button class="btn btn-primary" type="submit">Submit Request</button>
+			<button class="btn btn-primary my-5" type="submit">Submit Request</button>
 		</form>
 	</div>
 </div>	

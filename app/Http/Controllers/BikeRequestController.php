@@ -102,10 +102,17 @@ class BikeRequestController extends Controller
 
         // if (Session::has('data')){
             $request->session()->push('data',$bikerequest); //push for multiple data para array
+
+            // array_unique to delete duplicates in session
+            if (Session::has('data')){
+                $array = array_unique(Session::get('data'));
+            // once deleted, update the session data
+                Session::put('data', $array);
+            }
         // } 
             
-
-        return redirect(route('bikerequests.index'));
+        return back();
+        // return redirect(route('bikerequests.index'));
     }
 
     /**

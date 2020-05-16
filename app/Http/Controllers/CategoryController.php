@@ -22,6 +22,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        
         $categories = Category::orderBy('name','asc')->get();
         // $bikes = Bike::all();
 
@@ -110,6 +111,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        $this->authorize('update', $category);
         $validatedData = $request->validate([
             'name' => 'required|unique:categories,name|string'
             ]);
@@ -127,6 +129,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $this->authorize('delete', $category);
         $category->delete();
         return redirect(route('categories.index'))->with('message', "{$category->name} was deleted succesfully"); 
     }

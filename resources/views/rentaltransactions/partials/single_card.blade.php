@@ -40,9 +40,9 @@
 					{{ $rentaltransaction->rentalstatus->name }}
 					</span>
 					
-					{{-- @can('isAdmin') --}}
+					@can('isAdmin')
 						@include('rentaltransactions.partials.edit_form') 
-					{{-- @endcan('isAdmin') --}}
+					@endcan('isAdmin')
 				</div>
 			</div>
 

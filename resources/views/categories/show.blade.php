@@ -13,7 +13,8 @@
 				</div>
 			</div>
 		</div>
-
+		
+		@can('isAdmin')
 		<div class="col-12 col-md-4 col-lg-3 mx-auto">
 			<h2>Add New Bike</h2>
 
@@ -51,7 +52,8 @@
 				
 			</form>
 		</div>
-
+		@endcannot
+		
 		<div class="col-12 col-md-8 col-lg-9">
 			<div class="row">
 

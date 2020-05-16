@@ -25,7 +25,7 @@
 			<p class="badge badge-info">{{ $bike->category->name }}</p>
 			<p class="card-text">{{ $bike->description }}</p>
 
-			{{-- @cannot('isAdmin') --}}
+			
 			<form action="{{ route('bikerequests.update', ['bikerequest' => $bike->id]) }}" method="POST">		
 				@csrf
 				@method('PUT')
@@ -34,8 +34,7 @@
 
 			</form>
 			
-			{{-- @else --}}
-
+			@cannot('isUser')
 			<a href="{{ route('bikes.edit', ['bike' => $bike->id]) }}" class="btn btn-warning w-100 my-1">Edit</a>
 
 			<form action="{{ route('bikes.destroy', ['bike' => $bike->id])}}" method="POST">
@@ -45,8 +44,7 @@
 				<button class="btn btn-danger w-100 my-1">Delete</button>
 
 			</form>
-
-			{{-- @endcannot --}}
+			@endcannot
 		</div>
 	</div>
 	{{-- end of cards --}}

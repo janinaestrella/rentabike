@@ -14,6 +14,7 @@
 		</div>
 
 		<div class="col-12 col-md-4 mx-auto">
+			@can('isAdmin')
 			<form action="{{ route('categories.store') }}" method="post">
 				@csrf
 
@@ -22,6 +23,12 @@
 				<button class="btn btn-primary my-1 w-100">Add New Category</button>
 
 			</form>
+			@else
+			<ul class="list-group">
+				<li class="list-group-item active">All Items</li>
+			</ul>
+			@endcan
+
 		</div>
 
 		<div class="col-12 col-md-8 mx-auto">
