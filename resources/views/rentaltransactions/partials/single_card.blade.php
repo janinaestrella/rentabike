@@ -32,9 +32,9 @@
 					@elseif ($rentaltransaction->rentstatus_id == 3)
 					badge-danger
 					@elseif ($rentaltransaction->rentstatus_id == 4)
-					badge-info
+					badge-secondary
 					@else
-					badge-primary
+					badge-info
 					@endif
 					">	
 					{{ $rentaltransaction->rentalstatus->name }}
@@ -48,7 +48,7 @@
 
 			{{-- invoice --}}
 
-			{{-- <div class="table-responsive">
+			<div class="table-responsive">
 				<table class="table table-hover">
 					<thead>
 						<tr>
@@ -58,17 +58,38 @@
 						</tr>
 					</thead>
 
-					<tbody> --}}
+					<tbody>
 						{{-- item entry start --}}
-						{{-- {{ dd($rentaltransaction->bikes)}} --}}
-						{{-- @foreach ($rentaltransaction->bikes as $bike) --}}
-						{{-- <tr> --}}
-							{{-- <td>{{ $bike->model_code}}</td> --}}
-							
-						{{-- </tr> --}}
-						{{-- @endforeach --}}
+						{{-- {{ dd($rentaltransaction->bikes}} --}}
+						@foreach ($rentaltransaction->bikes as $bike)
+						<tr>
+							<td>{{ $bike->category->name}}</td>
+							<td>{{ $bike->model_code}}</td>
+							<td>
+							<span 
+								class="badge badge-sm
+								@if ($bike->bikestatus->_id ==1 )
+								badge-warning
+								@elseif ($bike->bikestatus->status_id == 2)
+								badge-success
+								@elseif ($bike->bikestatus->status_id == 3)
+								badge-danger
+								@elseif ($bike->bikestatus->status_id == 4)
+								badge-secondary
+								@else
+								badge-info
+								@endif
+								">	
+								{{ $bike->bikestatus->name }}
+							</span>
+
+
+							</td>
+	
+						</tr>
+						@endforeach
 						{{-- item entry end --}}
-					{{-- </tbody> --}}
+					</tbody>
 
 					{{-- <tfoot>
 						<tr>
@@ -77,7 +98,7 @@
 						</tr>
 					</tfoot> --}}
 
-			{{-- 	</table>
-			</div> --}}
+				</table>
+			</div>
 			
 		</div>

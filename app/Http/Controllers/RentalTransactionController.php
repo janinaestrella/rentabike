@@ -19,9 +19,16 @@ class RentalTransactionController extends Controller
      */
     public function index(Request $request)
     {
-       
+       //to display ung transaction ng user lang
+        // dd(Auth::user()->role_id);
+
+        if (Auth::user()->role_id === 1){
+            $rentaltransactions = RentalTransaction::all();
+        } else {
+            $rentaltransactions = RentalTransaction::where('user_id', Auth::user()->id)->get();
+        }
+
        $rentalstatuses = RentalStatus::all();
-       $rentaltransactions = RentalTransaction::all();
 
        return view('rentaltransactions.index')
         ->with('rentaltransactions', $rentaltransactions )

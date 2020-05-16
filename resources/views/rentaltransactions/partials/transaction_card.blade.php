@@ -12,9 +12,9 @@
 					@elseif ($rentaltransaction->rentstatus_id == 3)
 					badge-danger
 					@elseif ($rentaltransaction->rentstatus_id == 4)
-					badge-info
+					badge-secondary
 					@else
-					badge-primary
+					badge-info
 					@endif
 					">	
 					{{ $rentaltransaction->rentalstatus->name }}
