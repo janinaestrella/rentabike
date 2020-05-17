@@ -137,7 +137,7 @@ class CategoryController extends Controller
     // para mapalabas ung deleted sa softdelete, kelangan ng restore
     public function allCategories()
     {
-        // $this->authorize('viewAny', 'App\Category');
+        $this->authorize('viewAny', 'App\Category');
         $categories = Category::onlyTrashed()->get();
         $bike = Bike::all();
 
@@ -148,7 +148,7 @@ class CategoryController extends Controller
 
     public function restore($category)
     {   
-        // $this->authorize('restore', 'App\Category');
+        $this->authorize('restore', 'App\Category');
         Category::withTrashed()->find($category)->restore();
         return redirect('/categories');
     }

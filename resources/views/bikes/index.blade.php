@@ -31,14 +31,13 @@
 			</div>
 		</div>
 
-		{{-- <div class="col-12 col-md-4 mx-auto">
-			
-		</div> --}}
-
 		<div class="col-12  mx-auto">
 			<div class="row">
 				@foreach($bikes as $bike)
+					{{-- do not display if category is softdeleted --}}
+					@if (!$bike->category->trashed()) 
 					@include('bikes.partials.single_bike')
+					@endif
 				@endforeach
 			</div>
 		</div>

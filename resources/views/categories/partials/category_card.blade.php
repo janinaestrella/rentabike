@@ -10,6 +10,9 @@
 		<button type="button" class="btn btn-warning mx-1" data-toggle="modal" data-target="#modal{{$category->id}}">Edit
 		</button>
 
+		<!-- Start of Modal -->
+		@include('categories.partials.modal')
+		<!-- End of Modal -->
 		
 		<form action="{{ route('categories.destroy', ['category' => $category->id]) }}" method="post">
 			@csrf
@@ -17,11 +20,8 @@
 			<button class="btn btn-danger mx-1">Delete</button>
 
 		</form>
-		@endcan
+		
 
-		<!-- Start of Modal -->
-		@include('categories.partials.modal')
-		<!-- End of Modal -->
 		
 		@if($category->trashed())
 		<form action="{{ route('categories.restore', ['category' => $category->id]) }}" method="post">
@@ -31,6 +31,7 @@
 
 		</form>
 		@endif
+		@endcan
 	</div>	
 	
 </li>

@@ -18,7 +18,7 @@ class CategoryPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->role_id === 1;
     }
 
     /**
@@ -75,9 +75,9 @@ class CategoryPolicy
      * @param  \App\Category  $category
      * @return mixed
      */
-    public function restore(User $user, Category $category)
+    public function restore(User $user)
     {
-        //
+        return $user->role_id === 1;
     }
 
     /**

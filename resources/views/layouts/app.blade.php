@@ -38,11 +38,6 @@
                             'displayName' => 'Categories'
                             ])
 
-                    {{-- @include("partials.navlink", [
-                            'url' => route('bikes.create'),
-                            'displayName' => 'Add Bike'
-                            ]) --}}
-
                     @include("partials.navlink", [
                             'url' => route('bikes.index'),
                             'displayName' => 'Bikes'
@@ -59,11 +54,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                       {{--   @include("partials.navlink", [
-                            'url' => route('bikerequests.index'),
-                            'displayName' => 'Bike Request Form'
-                            ]) <span class="badge badge-primary">0</span>
- --}}                   
+                     
                          <li class="nav-item">
                             <a href="{{route('bikerequests.index')}}" class="nav-link">Bike Request Form
                                 <span id="cart-count" class="badge badge-primary">
@@ -89,10 +80,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    {{-- @can('isAdmin') --}}
+                                    @can('isAdmin')
                                     <a class="dropdown-item" href="{{ route('categories.trashed-index') }}" >Trashed Categories
                                     </a> 
-                                    {{-- @endcan('isAdmin') --}}
+                                    @endcan('isAdmin')
                                     
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
