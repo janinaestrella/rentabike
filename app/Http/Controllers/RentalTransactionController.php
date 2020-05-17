@@ -29,9 +29,11 @@ class RentalTransactionController extends Controller
         // dd(Auth::user()->role_id);
 
         if (Auth::user()->role_id === 1){
-            $rentaltransactions = RentalTransaction::all();
+            $rentaltransactions = RentalTransaction::orderBy('created_at', 'asc')->get();
         } else {
-            $rentaltransactions = RentalTransaction::where('user_id', Auth::user()->id)->get();
+            $rentaltransactions = RentalTransaction::where('user_id', Auth::user()->id)
+                            ->orderBy('created_at', 'asc')
+                            ->get();
         }
 
        $rentalstatuses = RentalStatus::all();

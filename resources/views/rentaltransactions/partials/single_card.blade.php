@@ -66,18 +66,15 @@
 							<td>{{ $bike->category->name}}</td>
 							<td>{{ $bike->model_code}}</td>
 							<td>
+
 							<span 
 								class="badge badge-sm
-								@if ($bike->bikestatus->_id ==1 )
-								badge-warning
-								@elseif ($bike->bikestatus->status_id == 2)
+								@if($bike->bikestatus_id == 1)
 								badge-success
-								@elseif ($bike->bikestatus->status_id == 3)
+								@elseif($bike->bikestatus_id == 2)
 								badge-danger
-								@elseif ($bike->bikestatus->status_id == 4)
-								badge-secondary
 								@else
-								badge-info
+								badge-secondary
 								@endif
 								">	
 								{{ $bike->bikestatus->name }}

@@ -15,7 +15,7 @@
 					@elseif($bike->bikestatus_id == 2)
 					badge-danger
 					@else
-					badge-warning
+					badge-secondary
 					@endif
 					"> 
 					{{ $bike->bikeStatus->name }}

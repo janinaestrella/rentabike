@@ -19,14 +19,11 @@
 					">	
 					{{ $rentaltransaction->rentalstatus->name }}
 				</span>
+				
 
 					
 			</button>
-
-			{{-- <span>
-				<a href="{{route('rentaltransactions.show', ['rentaltransaction' => $rentaltransaction->id])}}">View Transaction
-				</a>
-			</span> --}}	
+			<span>Booking Date: {{ date('M d, Y - h:i:s',strtotime($rentaltransaction->created_at)) }} </span>
 		</p>
 	</div>
 

@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card my-3">
 	<div class="card-body">
 		<form action="{{ route('rentaltransactions.update', ['rentaltransaction' => $rentaltransaction->id])}}" method="post">
 			@csrf
