@@ -134,4 +134,23 @@ class CategoryController extends Controller
         return redirect(route('categories.index'))->with('message', "{$category->name} was deleted succesfully"); 
     }
 
+    // para mapalabas ung deleted sa softdelete, kelangan ng restore
+    public function allCategories()
+    {
+        // $this->authorize('viewAny', 'App\Category');
+        $categories = Category::onlyTrashed()->get();
+        $bike = Bike::all();
+
+        return view('categories.all-categories')
+        ->with('categories',$categories);
+        // ->with('bike', $bike);
+    }
+
+    public function restore($category)
+    {   
+        // $this->authorize('restore', 'App\Category');
+        Category::withTrashed()->find($category)->restore();
+        return redirect('/categories');
+    }
+
 }

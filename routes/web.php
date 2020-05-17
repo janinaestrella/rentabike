@@ -24,6 +24,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/categories/trashed-index', 'CategoryController@allCategories')
+	->name('categories.trashed-index'); //taga display ng lahat ng trashed
+Route::put('/categories/{category}/restore', 'CategoryController@restore')
+	->name('categories.restore'); //taga restore ng trashed
+
 Route::delete('/bikerequests/clear', 'BikeRequestController@clear')->name('bikerequests.clear');
 
 Route::resources([

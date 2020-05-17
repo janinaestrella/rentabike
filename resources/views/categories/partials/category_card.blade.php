@@ -23,14 +23,14 @@
 		@include('categories.partials.modal')
 		<!-- End of Modal -->
 		
-		{{-- @if($category->trashed())
+		@if($category->trashed())
 		<form action="{{ route('categories.restore', ['category' => $category->id]) }}" method="post">
 			@csrf
 			@method('PUT') 
 			<button class="btn btn-success mx-1">Restore</button>
 
 		</form>
-		@endif --}}
+		@endif
 	</div>	
 	
 </li>
