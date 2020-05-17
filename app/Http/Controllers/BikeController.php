@@ -26,9 +26,12 @@ class BikeController extends Controller
         
         // to get id from url
         if ($request->query('category_id')){
-            $bikes = Bike::where("category_id", $request->query('category_id'))->get();
+            $bikes = Bike::where("category_id", $request
+                    ->query('category_id'))
+                    ->orderBy('bikestatus_id', 'asc')
+                    ->get();
         } else {
-            $bikes = Bike::all();
+            $bikes = Bike::orderBy('bikestatus_id', 'asc')->get();
         }
 
         $categories = Category::all();
