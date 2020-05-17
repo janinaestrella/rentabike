@@ -13,9 +13,9 @@
 			</div>
 		</div>
 
-		<div class="col-12 col-md-4 mx-auto">
+		<div class="col-12 col-md-4 mx-auto ">
 			@can('isAdmin')
-			<form action="{{ route('categories.store') }}" method="post">
+			<form action="{{ route('categories.store') }}" method="post" class="d-flex justify-content-end">
 				@csrf
 
 				<input type="text" class="form-control w-100" id="name" name="name" placeholder="Input New Category">

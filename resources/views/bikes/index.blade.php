@@ -3,16 +3,16 @@
 <div class="container">
 	<div class="row">
 
-		<div class="container d-flex justify-content-between">
-			<div class="row ">
+		<div class="container  ">
+			<div class="row justify-content-between ml-auto">
 				<div class="col-12 col-md-6">
 					<h1 class="">Choose a Bike</h1>
 				</div>
 
-				<div class="col-12 col-md-6">
-					<h6>View By Category</h6>
-					<form action="{{ route('bikes.index') }}">
-						<select name="category_id" id="category_id" class="form-control">
+				<div class="col-12 col-md-6 ml-auto d-flex justify-content-end">
+					<form action="{{ route('bikes.index') }}" class="form-inline">
+					<h6 class="mx-2">View By Category:</h6>
+						<select name="category_id" id="category_id" class="form-control" placeholder="View By Category">
 							@foreach($categories as $category)
 							<option 
 								value="{{ $category->id }}"
@@ -23,7 +23,7 @@
 							@endforeach
 						</select>
 
-						<button class="btn btn-primary my-1 w-100">View By Category</button>
+						<button class="btn btn-primary mx-1">Go</button>
 					</form>
 						
 				</div>
