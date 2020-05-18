@@ -41,7 +41,7 @@ class User extends Authenticatable
         return $this->hasMany('App\RentalTransaction');
     }
 
-    public function isAdmin(){
-        return $this->role_id === 1;
-    }
+    // public function isAdmin(){
+    //     return $this->role_id === 1;
+    // }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\RedirectResponse;
+// use Illuminate\Http\RedirectResponse;
 
 class IsAdmin
 {
@@ -19,16 +19,16 @@ class IsAdmin
     //     return $next($request);
     // }
 
-     public function handle($request, Closure $next)
-    {
-        $user = $request->user();
+    //  public function handle($request, Closure $next)
+    // {
+    //     $user = $request->user();
 
-        if ($user && $user->isAdmin()){
-            return $next($request);
-        }
+    //     if ($user && $user->isAdmin()){
+    //         return $next($request);
+    //     }
 
-        return new RedirectResponse(abort(403));
-    }
+    //     return new RedirectResponse(abort(403));
+    // }
 }
 
 
