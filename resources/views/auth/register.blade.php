@@ -4,6 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            
+            @includeWhen(Session::has('message'),'partials.message_flash')
+
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 

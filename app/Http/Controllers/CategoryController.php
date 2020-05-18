@@ -75,7 +75,7 @@ class CategoryController extends Controller
         // count all items in a category
         $totalcount = count($category->bikes);
 
-        // get all bikestatus id 1 where category_id is equal to category id
+        // get all bikestatus id 1(available) where category_id is equal to category id
         $availablebikes = Bike::where('bikestatus_id', 1)
                             ->where('category_id', $category->id)->count();
 
