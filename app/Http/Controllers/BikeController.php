@@ -77,15 +77,23 @@ class BikeController extends Controller
             'description' => 'required|string'
         ]);
 
-        
+    
 
-        $image_path = $request->file('image')->store('public/images');
+        // $image_path = $request->file('image')->store('public/images');
+        
+        $file = $request->file('image');
+        $name=time().$file->getClientOriginalName();
+        $image_path = 'images/' . $name;
+        Storage::disk('s3')->put($image_path, file_get_contents($file), 'public');
+
+        // dd($image_path);
 
         $bike = new Bike($validatedData);
 
         //save bike model code with category id as prefix
         $bike->model_code = $validatedData['category_id']."-".$validatedData['model_code'];
-        $bike->image = Storage::url($image_path); 
+        $bike->image = $image_path; 
+        // dd($bike->image);
         $bike->bikestatus_id = 1;
         // dd($bike->category);
 
@@ -149,13 +157,19 @@ class BikeController extends Controller
 
         if ($request->hasFile('image')){
            //save image to store('public/images') folder 
-            $image_path = $request->file('image')->store('public/images'); 
-            $bike->image = Storage::url($image_path);
+            // $image_path = $request->file('image')->store('public/images'); 
+
+            //save to amazon
+            $file = $request->file('image');
+            $name=time().$file->getClientOriginalName();
+            $image_path = 'images/' . $name;
+            Storage::disk('s3')->put($image_path, file_get_contents($file), 'public');
+
+            $bike->image = $image_path;
         }
 
         $bike->save();
 
-        // $categories = Category::all();
         return redirect(route('categories.show', ['category' => $bike->category_id]))->with('message', "Product {$bike->name} Updated");
         // return back();
         // return redirect(route('bikes.index'))->with('message', "Product {$bike->name} Updated");

@@ -22,4 +22,8 @@ class Bike extends Model
     	return $this->hasMany('App\RentalTransaction');
     }
     
+    public function bikeImage(){
+        $imagePath = 'https://rentabucket.s3.amazonaws.com/' .$this->image;    
+        return $imagePath;
+    }
 }

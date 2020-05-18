@@ -1,8 +1,9 @@
 <div class="col-12 col-sm-6 col-lg-4 my-3">
 	{{-- start of cards --}}
 	<div class="card h-100">
-		<img src="{{ $bike->image }}" alt="" class="card-img-top">
-
+		{{-- <img src="{{ $bike->image }}" alt="" class="card-img-top"> --}}
+		<img src="{{ $bike->bikeImage() }}" alt="" class="card-img-top">
+		
 		<div class="card-body ">
 			<div class="d-flex justify-content-between">
 			<h6 class="card-title"><strong>{{ $bike->name }}</strong></h6>
