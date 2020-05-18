@@ -111,8 +111,32 @@ class BikeRequestController extends Controller
             }
         // } 
             
-        return back();
-        // return redirect(route('bikerequests.index'));
+        // return back();
+        return redirect(route('bikerequests.index'));
+    }
+
+    public function updateCount (Request $request)
+    {   
+        
+        //get data from fetch js and convert to assoc array
+        $fetchedData = json_decode($request->getContent(), true);
+
+        $id = $fetchedData['id'];
+
+        // add id session para makita ulit siya ni laravel
+        $request->session()->push('data',$id); //push for multiple data para array
+        // dd($request->session());
+
+            // array_unique to delete duplicates in session
+            if (Session::has('data')){
+                $array = array_unique(Session::get('data'));
+            // once deleted, update the session data
+                Session::put('data', $array);
+            }
+
+        // return (Session::get('data'));
+        // return ['id' => $fetchedData];
+        return response()->json(["message" => count(Session::get('data'))]);
     }
 
     /**

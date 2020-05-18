@@ -30,7 +30,7 @@
 				@csrf
 				@method('PUT')
 
-				<button class="btn btn-primary w-100 my-1 add-to-cart" data-id="{{ $bike->id }}" type="submit">Request to Rent</button>
+				<button class="btn btn-primary w-100 my-1 request-count" data-id="{{ $bike->id }}" type="button">Request to Rent</button>
 
 			</form>
 			
