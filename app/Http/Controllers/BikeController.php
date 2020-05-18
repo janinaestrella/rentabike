@@ -82,6 +82,9 @@ class BikeController extends Controller
         $image_path = $request->file('image')->store('public/images');
 
         $bike = new Bike($validatedData);
+
+        //save bike model code with category id as prefix
+        $bike->model_code = $validatedData['category_id']."-".$validatedData['model_code'];
         $bike->image = Storage::url($image_path); 
         $bike->bikestatus_id = 1;
         // dd($bike->category);
