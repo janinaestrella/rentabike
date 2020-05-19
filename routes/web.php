@@ -37,7 +37,7 @@ Route::put('/bikes/{bike}/restore', 'BikeController@restore')
 
 Route::delete('/bikerequests/clear', 'BikeRequestController@clear')->name('bikerequests.clear');
 
-Route::put('/bikes/update-count', 'BikeRequestController@updateCount'); 
+Route::put('/api/bikerequests/update-count', 'BikeRequestController@updateCount'); 
 
 Route::resources([
 	'categories' => 'CategoryController',

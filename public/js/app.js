@@ -37337,7 +37337,7 @@ addToCartBtns.forEach(function (addToCartBtn) {
 
     var id = this.dataset.id;
     var csrfToken = document.querySelector('meta[name="csrf-token').getAttribute('content');
-    var url = "bikes/update-count";
+    var url = "/api/bikerequests/update-count";
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -37422,8 +37422,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Repo\wd007\capstone2\RentaBike\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Repo\wd007\capstone2\RentaBike\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Repo\wd007\capstone2\rentabikeheroku\rentabike2020\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Repo\wd007\capstone2\rentabikeheroku\rentabike2020\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

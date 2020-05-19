@@ -31,7 +31,8 @@
 		</div>
 
 		<div class="card-footer">
-			<form action="{{ route('bikerequests.update', ['bikerequest' => $bike->id]) }}" method="POST">		
+			{{-- <form action="{{ route('bikerequests.update', ['bikerequest' => $bike->id]) }}" method="POST">	 --}}
+			<form action="#" method="POST">		
 				@csrf
 				@method('PUT')
 

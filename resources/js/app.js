@@ -11,7 +11,7 @@ addToCartBtns.forEach( function(addToCartBtn) {
 
 		let csrfToken = document.querySelector('meta[name="csrf-token').getAttribute('content');
 
-		let url = "bikes/update-count";
+		let url = "/api/bikerequests/update-count";
 		fetch(url, {
 			method: 'PUT',
 			headers: {
