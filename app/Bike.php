@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Bike extends Model
 {
+    use SoftDeletes;
+    
     protected $fillable =['model_code', 'image', 'description', 'category_id', 'bikestatus_id'];
 
     public function category(){

@@ -21,6 +21,7 @@ class CreateBikesTable extends Migration
             $table->unsignedBigInteger('bikestatus_id')->default(1);
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('bikestatus_id')->references('id')->on('bike_statuses');
             $table->foreign('category_id')->references('id')->on('categories');
