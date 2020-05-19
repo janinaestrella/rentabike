@@ -187,4 +187,22 @@ class BikeController extends Controller
         $bike->delete();
         return back();
     }
+
+        // para mapalabas ung deleted sa softdelete, kelangan ng restore
+    public function allCategories()
+    {
+        $this->authorize('viewAny', 'App\Category');
+        $bikes = Bike::onlyTrashed()->get();
+        $bike = Bike::all();
+
+        return view('bikes.all-categories')
+        ->with('bikes',$bikes);
+    }
+
+    public function restore($bike)
+    {   
+        $this->authorize('restore', 'App\Bike');
+        Bike::withTrashed()->find($bike)->restore();
+        return redirect('/bikes');
+    }
 }

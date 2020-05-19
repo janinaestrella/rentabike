@@ -29,6 +29,12 @@ Route::get('/categories/trashed-index', 'CategoryController@allCategories')
 Route::put('/categories/{category}/restore', 'CategoryController@restore')
 	->name('categories.restore'); //taga restore ng trashed
 
+
+Route::get('/bikes/trashed-index', 'BikeController@allCategories')
+	->name('bikes.trashed-index'); //taga display ng lahat ng trashed
+Route::put('/bikes/{bike}/restore', 'BikeController@restore')
+	->name('bikes.restore'); //taga restore ng trashed
+
 Route::delete('/bikerequests/clear', 'BikeRequestController@clear')->name('bikerequests.clear');
 
 Route::put('/bikes/update-count', 'BikeRequestController@updateCount'); 

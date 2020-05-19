@@ -75,9 +75,9 @@ class BikePolicy
      * @param  \App\Bike  $bike
      * @return mixed
      */
-    public function restore(User $user, Bike $bike)
+    public function restore(User $user)
     {
-        //
+        return $user->role_id === 1;
     }
 
     /**

@@ -88,6 +88,9 @@
                                     <a class="dropdown-item" href="{{ route('categories.trashed-index') }}" >Trashed Categories
                                     </a> 
 
+                                    <a class="dropdown-item" href="{{ route('bikes.trashed-index') }}" >Trashed Bikes
+                                    </a>
+
                                     {{-- @if (Route::has('register'))
                                     <a class="dropdown-item" href="{{ route('register') }}">
                                     {{ __('Register') }}</a>
