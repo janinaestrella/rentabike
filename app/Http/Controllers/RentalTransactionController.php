@@ -62,8 +62,8 @@ class RentalTransactionController extends Controller
     public function store(Request $request)
     {   
         $validatedData = $request->validate([
-            'pickup_date' => 'required|date',
-            'return_date' => 'required|date'
+            'pickup_date' => 'required|date|date_format:Y-m-d|after:yesterday',
+            'return_date' => 'required|date|date_format:Y-m-d|after:pickup_date'
             ]);
 
         // 1. add dates, code and user id to rentaltransaction table

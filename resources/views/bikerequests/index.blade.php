@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-12">
-
+			@includeWhen($errors->any(), 'partials.error_message')
 			@if(Session::has('data'))
 				@include('bikerequests.partials.requestpage')
 			
