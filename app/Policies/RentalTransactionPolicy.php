@@ -30,7 +30,8 @@ class RentalTransactionPolicy
      */
     public function view(User $user, RentalTransaction $rentalTransaction)
     {
-        //
+        return $user->id === $rentalTransaction->user_id || $user->role_id === 1; 
+        //para maview ng specific user ung own transactions nia and kapag admin ka
     }
 
     /**

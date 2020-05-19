@@ -67,6 +67,7 @@ class BikeController extends Controller
      */
     public function store(Request $request)
     {   
+        $this->authorize('create', $bike);
         // dd($request->all());
         //validation
         $validatedData = $request->validate([

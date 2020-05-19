@@ -107,7 +107,7 @@ class RentalTransactionController extends Controller
      */
     public function show(RentalTransaction $rentalTransaction)
     {
-        //
+        $this->authorize('view', $rentalTransaction);
     }
 
     /**
@@ -118,7 +118,7 @@ class RentalTransactionController extends Controller
      */
     public function edit(RentalTransaction $rentalTransaction)
     {
-        //
+         $this->authorize('update', $rentaltransaction);
     }
 
     /**

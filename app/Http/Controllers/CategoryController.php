@@ -38,7 +38,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', $category);
     }
 
     /**
@@ -49,6 +49,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', $category);
         //validation
         $validatedData = $request->validate([
             'name' => 'required|unique:categories,name|string'
@@ -99,7 +100,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        
+        $this->authorize('update', $category);
     }
 
     /**
