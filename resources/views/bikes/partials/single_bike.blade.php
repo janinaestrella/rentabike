@@ -32,6 +32,9 @@
 
 		<div class="card-footer">
 			{{-- <form action="{{ route('bikerequests.update', ['bikerequest' => $bike->id]) }}" method="POST">	 --}}
+
+			{{-- can be requested if bikestatus is available, else, disabled --}}
+			@if( $bike->bikestatus_id === 1) 
 			<form action="#" method="POST">		
 				@csrf
 				@method('PUT')
@@ -39,7 +42,12 @@
 				<button class="btn btn-primary w-100 my-1 request-count" data-id="{{ $bike->id }}" type="button">Request to Rent</button>
 
 			</form>
+			@else 
 			
+			<button class="btn btn-secondary w-100 my-1 request-count" disabled="disabled" type="button">Request to Rent</button>
+
+			@endif
+
 			@cannot('isUser')
 			<a href="{{ route('bikes.edit', ['bike' => $bike->id]) }}" class="btn btn-warning w-100 my-1">Edit</a>
 

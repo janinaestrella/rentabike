@@ -21,7 +21,7 @@ class RentalTransaction extends Model
     public function bikes()
     {	
     	// ('model', 'pivot table')->withPivot('additional columns sa table')
-    	return $this->belongsToMany('App\Bike', 'bike_rental_transactions')->withTimestamps();
+    	return $this->belongsToMany('App\Bike', 'bike_rental_transactions')->withTimestamps()->withTrashed();
     }
 }
 
