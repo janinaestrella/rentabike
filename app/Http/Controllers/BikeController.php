@@ -65,7 +65,7 @@ class BikeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Bike $bike)
     {   
         $this->authorize('create', $bike);
         // dd($request->all());

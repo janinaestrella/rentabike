@@ -49,15 +49,24 @@
 			@endif
 
 			@cannot('isUser')
-			<a href="{{ route('bikes.edit', ['bike' => $bike->id]) }}" class="btn btn-warning w-100 my-1">Edit</a>
+			<div class="row">
+				<div class="col-md-6">
+					<a href="{{ route('bikes.edit', ['bike' => $bike->id]) }}" class="btn btn-warning w-100 my-1">Edit</a>
+				</div>
 
-			<form action="{{ route('bikes.destroy', ['bike' => $bike->id])}}" method="POST">
-				@csrf
-				@method('DELETE')
+				<div class="col-md-6">
+					<form action="{{ route('bikes.destroy', ['bike' => $bike->id])}}" method="POST">
+					@csrf
+					@method('DELETE')
 
-				<button class="btn btn-danger w-100 my-1">Delete</button>
+					<button class="btn btn-danger w-100 my-1">Delete</button>
 
-			</form>
+					</form>
+				</div>
+			</div>
+			
+
+			
 			@endcannot
 		</div>
 	</div>
