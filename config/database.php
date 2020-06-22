@@ -58,10 +58,10 @@ return [
             // 'username' => 'RNQ3NPf0Fg',
             // 'password' => 'i5GECOcdMJ',
 
-            // 'host' => 'us-cdbr-east-05.cleardb.net',
-            // 'database' => 'heroku_8cc8a12fe1337ed',
-            // 'username' => 'b51f1ee55ca514',
-            // 'password' => '76f593d7',
+            'host' => 'us-cdbr-east-05.cleardb.net',
+            'database' => 'heroku_8cc8a12fe1337ed',
+            'username' => 'b51f1ee55ca514',
+            'password' => '76f593d7',
 
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
