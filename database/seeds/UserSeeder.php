@@ -14,15 +14,15 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
         	'name' => 'Admin',
         	'email' => 'admin@email.com',
-        	'password' => Hash::make('adminadmin'),
+        	'password' => Hash::make('test1234'),
         	'role_id' => 1,
         ]);
 
-        DB::table('users')->insert([
-            'name' => 'John Doe',
-            'email' => 'johndoe@email.com',
-            'password' => Hash::make('test1234'),
-            'role_id' => 2,
-        ]);
+        // DB::table('users')->insert([
+        //     'name' => 'John Doe',
+        //     'email' => 'johndoe@email.com',
+        //     'password' => Hash::make('test1234'),
+        //     'role_id' => 2,
+        // ]);
     }
 }

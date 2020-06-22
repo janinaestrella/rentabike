@@ -48,20 +48,20 @@ return [
             'url' => env('DATABASE_URL'),
             'port' => env('DB_PORT', '3306'),
             
-            // 'host' => env('DB_HOST', '127.0.0.1'),
-            // 'database' => env('DB_DATABASE', 'forge'),
-            // 'username' => env('DB_USERNAME', 'forge'),
-            // 'password' => env('DB_PASSWORD', ''),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
 
             // 'host' => 'remotemysql.com',
             // 'database' => 'RNQ3NPf0Fg',
             // 'username' => 'RNQ3NPf0Fg',
             // 'password' => 'i5GECOcdMJ',
 
-            'host' => 'us-cdbr-east-05.cleardb.net',
-            'database' => 'heroku_8cc8a12fe1337ed',
-            'username' => 'b51f1ee55ca514',
-            'password' => '76f593d7',
+            // 'host' => 'us-cdbr-east-05.cleardb.net',
+            // 'database' => 'heroku_8cc8a12fe1337ed',
+            // 'username' => 'b51f1ee55ca514',
+            // 'password' => '76f593d7',
 
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
